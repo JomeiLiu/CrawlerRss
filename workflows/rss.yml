@@ -1,6 +1,6 @@
 on:
-  rss:
-    url: https://hnrss.org/newest?points=300&count=3
+  rsshub_mini_dev:
+    path: /smzdm/keyword/女装
 jobs:
   print:
     name: Print
@@ -8,10 +8,10 @@ jobs:
     steps:
       - name: Print Outputs
         env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
+          title: ${{on.rsshub.outputs.title}}
+          description: ${{on.rsshub.outputs.description}}
+          link: ${{on.rsshub.outputs.link}}
         run: |
           echo title: $title
-          echo contentSnippet: $contentSnippet
+          echo description: $description
           echo link: $link
