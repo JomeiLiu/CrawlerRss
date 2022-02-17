@@ -1,6 +1,6 @@
 on:
   rsshub_mini_dev:
-    path: /smzdm/keyword/女装
+    path: /douban/explore/all/
 jobs:
   print:
     name: Print
@@ -11,7 +11,9 @@ jobs:
           title: ${{on.rsshub_mini_dev.outputs.title}}
           description: ${{on.rsshub_mini_dev.outputs.description}}
           link: ${{on.rsshub_mini_dev.outputs.link}}
+          pubDate: ${{on.rsshub_mini_dev.outputs.pubDate}}
         run: |
           echo title: $title
           echo description: $description
           echo link: $link
+          echo pubDate: $pubDate
