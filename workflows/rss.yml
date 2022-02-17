@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: Print Outputs
         env:
-          title: ${{on.rsshub.outputs.title}}
-          description: ${{on.rsshub.outputs.description}}
-          link: ${{on.rsshub.outputs.link}}
+          title: ${{on.rsshub_mini_dev.outputs.title}}
+          description: ${{on.rsshub_mini_dev.outputs.description}}
+          link: ${{on.rsshub_mini_dev.outputs.link}}
         run: |
           echo title: $title
           echo description: $description
