@@ -12,8 +12,308 @@ jobs:
           description: ${{on.rsshub_mini_dev.outputs.description}}
           link: ${{on.rsshub_mini_dev.outputs.link}}
           pubDate: ${{on.rsshub_mini_dev.outputs.pubDate}}
+          secret_id: ${{secrets.SECRET_ID}}
+          database_id: ${{secrets.DATABASE_ID}}
         run: |
           echo title: $title
           echo description: $description
           echo link: $link
-          echo pubDate: $pubDate
+          description_new=`echo $description | sed -e "s/\"/'/g" | sed -e "s/!//g" | sed -e "s/#//g"` 
+          title_new=`echo $title | sed -e "s/\"/'/g" | sed -e "s/!//g" | sed -e "s/#//g"`+'rsshub_mini_dev'
+          current_time=`date +'%Y-%m-%d %H:%M:%S'`
+          echo $description_new
+          echo $title_new
+          description1=$(echo $description_new | cut -c1-2002)
+          description2=$(echo $description_new | cut -c2001-4002)
+          description3=$(echo $description_new | cut -c4001-6002)
+          description4=$(echo $description_new | cut -c6001-8002)
+          description5=$(echo $description_new | cut -c8001-10002)
+          description6=$(echo $description_new | cut -c10001-12002)
+          description7=$(echo $description_new | cut -c12001-14002)
+          description8=$(echo $description_new | cut -c14001-16002)
+          description9=$(echo $description_new | cut -c16001-18002)
+          description10=$(echo $description_new | cut -c18001-20002)
+          description11=$(echo $description_new | cut -c20001-22002)
+          description12=$(echo $description_new | cut -c22001-24002)
+          description13=$(echo $description_new | cut -c24001-26002)
+          description14=$(echo $description_new | cut -c26001-28002)
+          description15=$(echo $description_new | cut -c28001-30002)
+          description16=$(echo $description_new | cut -c30001-32002)
+          description17=$(echo $description_new | cut -c32001-34002)
+          description18=$(echo $description_new | cut -c34001-36002)
+          description19=$(echo $description_new | cut -c36001-38002)
+          description20=$(echo $description_new | cut -c38001-40002)
+          curl  -X POST https://api.notion.com/v1/pages \
+                -H "Authorization: Bearer ${{ secrets.SECRET_ID }}" \
+                -H "Content-Type: application/json" \
+                -H "Notion-Version: 2021-08-16" \
+                --data "{
+                  \"parent\": { \"database_id\": \"${{ secrets.DATABASE_ID }}\" },
+                  \"properties\": {
+                      \"Title\": {
+                          \"type\": \"title\",
+                          \"title\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"$title_new\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description1\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description1}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description2\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description2}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description3\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description3}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description4\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description4}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description5\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description5}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description6\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description6}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description7\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description7}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description8\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description8}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description9\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description9}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description10\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description10}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description11\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description11}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description12\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description12}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description13\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description13}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description14\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description14}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description15\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description15}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description16\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description16}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description17\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description17}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description18\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description18}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description19\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description19}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Description20\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"${description20}\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Url\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"$link\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"Date\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"$pubDate\"
+                                  }
+                              }
+                          ]
+                      },
+                      \"AddDate\": {
+                          \"type\": \"rich_text\",
+                          \"rich_text\": [
+                              {
+                                  \"type\": \"text\",
+                                  \"text\": {
+                                      \"content\": \"$current_time\"
+                                  }
+                              }
+                          ]
+                      }
+                  }
+                }"
+          echo 'finished'
